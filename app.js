@@ -2,10 +2,11 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
+import contactsRouter from "./routes/contactsRouter.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-import contactsRouter from "./routes/contactsRouter.js";
+
 
 const dbHost = process.env.DB_HOST;
 
@@ -26,6 +27,8 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
-mongoose.connect(dbHost).then(app.listen(3000, () => {console.log('Database connection successful')})).catch(() => {console.error(err.message);
+mongoose.connect(dbHost).
+then(app.listen(3000, () => {console.log('Database connection successful')}))
+.catch(() => {console.error(err.message);
 process.exit(1)});
 
