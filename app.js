@@ -27,8 +27,6 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
-mongoose.connect(dbHost).
-then(app.listen(3000, () => {console.log('Database connection successful')}))
-.catch(() => {console.error(err.message);
+mongoose.connect(dbHost).then(app.listen(3000, () => {console.log('Database connection successful')})).catch(() => {console.error(err.message);
 process.exit(1)});
 
